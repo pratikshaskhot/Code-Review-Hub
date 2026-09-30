@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Submission Details - CodeReviewHub">
+
+    <title>Submission Details | CodeReviewHub</title>
+
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Dashboard CSS -->
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css">
+
+
+    <style>
+
+        /* =====================================================
+           PAGE
+        ===================================================== */
+
+        .submission-page {
+            background: #050b18 !important;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .submission-main {
+            padding: 40px 0 60px;
+            background: #050b18;
+        }
+
+
+        /* =====================================================
+           PAGE HEADER
+        ===================================================== */
+
+        .submission-page-header {
+
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .submission-label {
+
+            display: block;
+            margin-bottom: 7px;
+
+            color: #38bdf8;
+
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+        }
+
+        .submission-page-header h1 {
+
+            margin: 0 0 8px;
+
+            color: #ffffff;
+
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .submission-page-header p {
+
+            margin: 0;
+
+            color: #94a3b8;
+
+            font-size: 15px;
+        }
+
+
+        /* =====================================================
+           BACK BUTTON
+        ===================================================== */
+
+        .back-dashboard-btn {
+
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            padding: 11px 17px;
+
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+
+            background: #0b1425;
+            color: #cbd5e1;
+
+            text-decoration: none;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            white-space: nowrap;
+
+            transition: 0.2s ease;
+        }
+
+        .back-dashboard-btn:hover {
+
+            border-color: #38bdf8;
+
+            background: #111d32;
+
+            color: #38bdf8;
+        }
+
+
+        /* =====================================================
+           MAIN CARD
+        ===================================================== */
+
+        .submission-card-wrapper {
+
+            overflow: hidden;
+
+            background: #08111f;
+
+            border: 1px solid #17243a;
+            border-radius: 14px;
+
+            box-shadow:
+                0 8px 30px rgba(0, 0, 0, 0.25);
+        }
+
+
+        /* =====================================================
+           SUBMISSION SUMMARY
+        ===================================================== */
+
+        .submission-summary {
+
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 20px;
+
+            padding: 25px 28px;
+
+            background: #08111f;
+
+            border-bottom: 1px solid #17243a;
+        }
+
+        .submission-summary-left {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 16px;
+
+            min-width: 0;
+        }
+
+        .submission-icon {
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            width: 52px;
+            height: 52px;
+
+            flex-shrink: 0;
+
+            border-radius: 12px;
+
+            background: #071a30;
+            color: #38bdf8;
+
+            font-family: Consolas, monospace;
+
+            font-size: 19px;
+            font-weight: 700;
+        }
+
+        .submission-summary h2 {
+
+            margin: 0 0 7px;
+
+            color: #f8fafc;
+
+            font-size: 21px;
+        }
+
+        .submission-meta {
+
+            display: flex;
+
+            align-items: center;
+            flex-wrap: wrap;
+
+            gap: 7px;
+
+            margin: 0;
+
+            color: #94a3b8;
+
+            font-size: 13px;
+        }
+
+        .submission-meta .language {
+
+            color: #38bdf8;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           STUDENT INFORMATION
+        ===================================================== */
+
+        .student-information {
+
+            margin-top: 10px;
+
+            padding-top: 10px;
+
+            border-top: 1px solid #1b2a40;
+        }
+
+        .student-information-label {
+
+            display: block;
+
+            margin-bottom: 4px;
+
+            color: #38bdf8;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.08em;
+        }
+
+        .student-information strong {
+
+            display: block;
+
+            margin-bottom: 2px;
+
+            color: #f1f5f9;
+
+            font-size: 13px;
+        }
+
+        .student-information span {
+
+            color: #94a3b8;
+
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           STATUS BADGE
+        ===================================================== */
+
+        .submission-status {
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 8px 15px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            white-space: nowrap;
+        }
+
+        .status-submitted {
+
+            background: #092448;
+            color: #38bdf8;
+        }
+
+        .status-review,
+        .status-under-review {
+
+            background: #2b1b08;
+            color: #f59e0b;
+        }
+
+        .status-changes {
+
+            background: #351014;
+            color: #f87171;
+        }
+
+        .status-approved {
+
+            background: #082c1c;
+            color: #4ade80;
+        }
+
+
+        /* =====================================================
+           BODY
+        ===================================================== */
+
+        .submission-body {
+
+            padding: 28px;
+
+            background: #08111f;
+        }
+
+
+        /* =====================================================
+           SECTION
+        ===================================================== */
+
+        .submission-section {
+
+            margin-bottom: 35px;
+        }
+
+        .submission-section:last-child {
+
+            margin-bottom: 0;
+        }
+
+        .section-label {
+
+            display: block;
+
+            margin-bottom: 5px;
+
+            color: #38bdf8;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.08em;
+        }
+
+        .section-heading {
+
+            margin: 0 0 13px;
+
+            color: #f8fafc;
+
+            font-size: 18px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           PROGRESS TIMELINE
+        ===================================================== */
+
+        .timeline-card {
+
+            padding: 25px 20px;
+
+            border: 1px solid #1b2a40;
+
+            border-radius: 10px;
+
+            background: #0b1627;
+        }
+
+        .status-timeline {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+        }
+
+        .timeline-item {
+
+            position: relative;
+
+            text-align: center;
+
+            padding: 0 10px;
+        }
+
+        .timeline-item:not(:last-child)::after {
+
+            content: "";
+
+            position: absolute;
+
+            top: 11px;
+
+            left: calc(50% + 13px);
+
+            width: calc(100% - 26px);
+
+            height: 2px;
+
+            background: #26364d;
+        }
+
+        .timeline-item.completed:not(:last-child)::after {
+
+            background: #2563eb;
+        }
+
+        .timeline-dot {
+
+            position: relative;
+
+            z-index: 2;
+
+            width: 21px;
+            height: 21px;
+
+            margin: 0 auto 10px;
+
+            border-radius: 50%;
+
+            background: #26364d;
+
+            border: 4px solid #0b1627;
+
+            box-shadow: 0 0 0 1px #334155;
+        }
+
+        .timeline-item.completed .timeline-dot {
+
+            background: #2563eb;
+
+            box-shadow: 0 0 0 1px #2563eb;
+        }
+
+        .timeline-item.active .timeline-dot {
+
+            background: #f59e0b;
+
+            box-shadow: 0 0 0 1px #f59e0b;
+        }
+
+        .timeline-item strong {
+
+            display: block;
+
+            margin-bottom: 5px;
+
+            color: #e2e8f0;
+
+            font-size: 12px;
+        }
+
+        .timeline-item p {
+
+            margin: 0 auto;
+
+            max-width: 170px;
+
+            color: #64748b;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           CODE SECTION
+        ===================================================== */
+
+        .code-heading-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 13px;
+        }
+
+        .language-badge {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            padding: 6px 11px;
+
+            border-radius: 7px;
+
+            background: #092448;
+
+            border: 1px solid #164e7a;
+
+            color: #38bdf8;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+        }
+
+
+        /* =====================================================
+           CODE EDITOR
+        ===================================================== */
+
+        .code-editor {
+
+            overflow: hidden;
+
+            border: 1px solid #303030;
+
+            border-radius: 10px;
+
+            background: #1e1e1e;
+
+            box-shadow:
+                0 7px 18px rgba(0, 0, 0, 0.25);
+        }
+
+        .code-editor-top {
+
+            display: flex;
+
+            align-items: center;
+
+            min-height: 40px;
+
+            padding: 0 14px;
+
+            background: #252526;
+
+            border-bottom: 1px solid #383838;
+        }
+
+        .editor-dots {
+
+            display: flex;
+
+            gap: 7px;
+        }
+
+        .editor-dot {
+
+            width: 10px;
+            height: 10px;
+
+            border-radius: 50%;
+
+            background: #666;
+        }
+
+        .editor-title {
+
+            margin-left: 14px;
+
+            color: #c5c5c5;
+
+            font-family: Consolas, monospace;
+
+            font-size: 12px;
+        }
+
+        .code-display {
+
+            min-height: 180px;
+
+            padding: 13px 0;
+
+            overflow-x: auto;
+
+            background: #1e1e1e;
+
+            color: #d4d4d4;
+
+            font-family:
+                Consolas,
+                "Courier New",
+                monospace;
+
+            font-size: 13px;
+
+            line-height: 1.65;
+        }
+
+        .code-line {
+
+            display: flex;
+
+            min-height: 22px;
+        }
+
+        .line-number {
+
+            flex: 0 0 55px;
+
+            width: 55px;
+
+            padding-right: 14px;
+
+            text-align: right;
+
+            color: #858585;
+
+            user-select: none;
+
+            border-right: 1px solid #333;
+        }
+
+        .line-content {
+
+            min-width: max-content;
+
+            padding-left: 15px;
+            padding-right: 20px;
+
+            white-space: pre;
+        }
+
+
+        /* =====================================================
+           REVIEW AREA
+        ===================================================== */
+
+        .review-area {
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr)
+                minmax(0, 1fr);
+
+            gap: 25px;
+        }
+
+
+        /* =====================================================
+           SIDE CARD
+        ===================================================== */
+
+        .side-card {
+
+            padding: 22px;
+
+            border: 1px solid #1b2a40;
+
+            border-radius: 10px;
+
+            background: #0b1627;
+        }
+
+        .side-card-label {
+
+            display: block;
+
+            margin-bottom: 5px;
+
+            color: #38bdf8;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.08em;
+        }
+
+        .side-card h2 {
+
+            margin: 0 0 17px;
+
+            color: #f1f5f9;
+
+            font-size: 17px;
+        }
+
+
+        /* =====================================================
+           REVIEWER CONTROLS
+        ===================================================== */
+
+        .reviewer-action-group {
+
+            margin-bottom: 16px;
+        }
+
+        .reviewer-action-group label {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #cbd5e1;
+
+            font-size: 12px;
+
+            font-weight: 600;
+        }
+
+        .reviewer-action-group select,
+        .reviewer-action-group input,
+        .reviewer-action-group textarea {
+
+            width: 100%;
+
+            box-sizing: border-box;
+
+            padding: 11px 12px;
+
+            border: 1px solid #26364d;
+
+            border-radius: 7px;
+
+            outline: none;
+
+            background: #07111f;
+
+            color: #e2e8f0;
+
+            font-family: inherit;
+
+            font-size: 12px;
+        }
+
+        .reviewer-action-group textarea {
+
+            resize: vertical;
+
+            line-height: 1.5;
+        }
+
+        .reviewer-action-group select:focus,
+        .reviewer-action-group input:focus,
+        .reviewer-action-group textarea:focus {
+
+            border-color: #2563eb;
+        }
+
+
+        /* =====================================================
+           REVIEW BUTTON
+        ===================================================== */
+
+        .review-submit-btn {
+
+            width: 100%;
+
+            padding: 11px 15px;
+
+            border: 0;
+
+            border-radius: 7px;
+
+            background: #2563eb;
+
+            color: #ffffff;
+
+            cursor: pointer;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            transition: 0.2s ease;
+        }
+
+        .review-submit-btn:hover {
+
+            background: #1d4ed8;
+        }
+
+        .review-submit-btn:disabled {
+
+            opacity: 0.6;
+
+            cursor: not-allowed;
+        }
+
+
+        /* =====================================================
+           REVIEW MESSAGE
+        ===================================================== */
+
+        .review-message {
+
+            margin: 12px 0 0;
+
+            padding: 9px 11px;
+
+            border-radius: 6px;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+        }
+
+        .review-message.success {
+
+            background: #082c1c;
+
+            color: #4ade80;
+
+            border: 1px solid #166534;
+        }
+
+        .review-message.error {
+
+            background: #351014;
+
+            color: #f87171;
+
+            border: 1px solid #7f1d1d;
+        }
+
+
+        /* =====================================================
+           COMMENTS
+        ===================================================== */
+
+        .comment-count {
+
+            float: right;
+
+            padding: 5px 9px;
+
+            border-radius: 20px;
+
+            background: #092448;
+
+            color: #38bdf8;
+
+            font-size: 10px;
+
+            font-weight: 700;
+        }
+
+        .comments-container {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+        .no-comments {
+
+            padding: 28px 15px;
+
+            border: 1px dashed #26364d;
+
+            border-radius: 8px;
+
+            background: #07111f;
+
+            color: #64748b;
+
+            text-align: center;
+
+            font-size: 13px;
+        }
+
+        .comment-card,
+        .comment-item {
+
+            padding: 14px;
+
+            border: 1px solid #1b2a40;
+
+            border-left: 3px solid #2563eb;
+
+            border-radius: 8px;
+
+            background: #07111f;
+        }
+
+        .comment-card-header,
+        .comment-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 10px;
+
+            margin-bottom: 7px;
+        }
+
+        .comment-reviewer,
+        .comment-header strong {
+
+            color: #e2e8f0;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+        .comment-date {
+
+            color: #64748b;
+
+            font-size: 10px;
+        }
+
+        .comment-type {
+
+            display: inline-block;
+
+            margin-bottom: 7px;
+
+            padding: 3px 7px;
+
+            border-radius: 5px;
+
+            background: #092448;
+
+            color: #38bdf8;
+
+            font-size: 9px;
+
+            font-weight: 700;
+        }
+
+        .comment-text,
+        .comment-item p {
+
+            margin: 0;
+
+            color: #cbd5e1;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+
+            white-space: pre-wrap;
+        }
+
+
+        /* =====================================================
+           COMMENT FORM
+        ===================================================== */
+
+        .reviewer-comment-form {
+
+            margin-bottom: 20px;
+
+            padding-bottom: 20px;
+
+            border-bottom: 1px solid #1b2a40;
+        }
+
+
+        /* =====================================================
+           FINAL FEEDBACK
+        ===================================================== */
+
+        .feedback-box {
+
+            min-height: 100px;
+
+            padding: 20px;
+
+            border: 1px dashed #26364d;
+
+            border-radius: 8px;
+
+            background: #07111f;
+
+            color: #cbd5e1;
+
+            line-height: 1.7;
+
+            white-space: pre-wrap;
+        }
+
+        .feedback-empty {
+
+            color: #64748b;
+
+            text-align: center;
+        }
+
+
+        /* =====================================================
+           LOADING
+        ===================================================== */
+
+        .submission-loading {
+
+            padding: 70px 20px;
+
+            color: #94a3b8;
+
+            text-align: center;
+
+            font-size: 14px;
+        }
+
+        .submission-error {
+
+            margin-bottom: 20px;
+
+            padding: 17px;
+
+            border: 1px solid #7f1d1d;
+
+            border-radius: 9px;
+
+            background: #2a1014;
+
+            color: #fca5a5;
+        }
+
+
+        /* =====================================================
+           REVIEW PAGE BUTTON
+        ===================================================== */
+
+        .review-page-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 100%;
+
+            box-sizing: border-box;
+
+            margin-top: 10px;
+
+            padding: 10px 14px;
+
+            border: 1px solid #26364d;
+
+            border-radius: 7px;
+
+            background: #07111f;
+
+            color: #38bdf8;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+        .review-page-btn:hover {
+
+            border-color: #38bdf8;
+
+            background: #092448;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .review-area {
+
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 750px) {
+
+            .submission-main {
+
+                padding: 30px 15px 50px;
+            }
+
+            .submission-page-header {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+            .submission-summary {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+            .submission-status {
+
+                align-self: flex-start;
+            }
+
+            .submission-body {
+
+                padding: 20px;
+            }
+
+            .status-timeline {
+
+                grid-template-columns: 1fr;
+
+                gap: 20px;
+            }
+
+            .timeline-item {
+
+                display: grid;
+
+                grid-template-columns: 25px 1fr;
+
+                gap: 10px;
+
+                text-align: left;
+            }
+
+            .timeline-dot {
+
+                margin: 0;
+            }
+
+            .timeline-item:not(:last-child)::after {
+
+                top: 20px;
+
+                left: 9px;
+
+                width: 2px;
+
+                height: calc(100% + 20px);
+            }
+        }
+
+
+        @media (max-width: 500px) {
+
+            .submission-page-header h1 {
+
+                font-size: 26px;
+            }
+
+            .submission-summary h2 {
+
+                font-size: 18px;
+            }
+
+            .code-heading-row {
+
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+            .code-display {
+
+                font-size: 12px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body class="dashboard-page submission-page">
+
+
+    <!-- =====================================================
+         NAVBAR
+    ===================================================== -->
+
+    <header class="dashboard-navbar">
+
+        <div class="container dashboard-nav-container">
+
+            <a href="index.html" class="logo">
+
+                <span class="logo-icon">
+                    &lt;/&gt;
+                </span>
+
+                CodeReviewHub
+
+            </a>
+
+
+            <nav class="dashboard-nav">
+
+                <a href="dashboard.html">
+                    Dashboard
+                </a>
+
+                <a href="submit.html">
+                    Submit Code
+                </a>
+
+                <a href="profile.html">
+                    Profile
+                </a>
+
+            </nav>
+
+
+            <div class="dashboard-user">
+
+                <div class="user-avatar" data-user-avatar>
+                    U
+                </div>
+
+                <div class="user-info">
+
+                    <span
+                        class="user-name"
+                        data-user-name>
+                        User
+                    </span>
+
+                    <span
+                        class="user-role"
+                        data-user-role>
+                        USER
+                    </span>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="logout-btn"
+                    id="logoutButton">
+
+                    Logout
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ===================================================== -->
+
+    <main class="submission-main">
+
+        <div class="container">
+
+
+            <!-- =================================================
+                 PAGE HEADER
+            ================================================= -->
+
+            <section class="submission-page-header">
+
+                <div>
+
+                    <span
+                        class="submission-label"
+                        data-page-role-label>
+
+                        SUBMISSION REVIEW
+
+                    </span>
+
+                    <h1>
+                        Submission Details
+                    </h1>
+
+                    <p data-page-description>
+                        Review the submitted code, comments,
+                        status, and feedback.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="dashboard.html"
+                    class="back-dashboard-btn">
+
+                    ← Back to Dashboard
+
+                </a>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 LOADING
+            ================================================= -->
+
+            <div
+                class="submission-loading"
+                data-submission-loading>
+
+                Loading submission...
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ERROR
+            ================================================= -->
+
+            <div
+                class="submission-error"
+                data-submission-error
+                style="display:none;">
+
+            </div>
+
+
+
+            <!-- =================================================
+                 DYNAMIC CONTENT
+            ================================================= -->
+
+            <div
+                data-submission-content
+                style="display:none;">
+
+
+                <div class="submission-card-wrapper">
+
+
+                    <!-- =================================================
+                         SUBMISSION DETAILS
+                    ================================================= -->
+
+                    <section class="submission-summary">
+
+                        <div class="submission-summary-left">
+
+
+                            <!-- CODE ICON -->
+
+                            <div class="submission-icon">
+
+                                &lt;/&gt;
+
+                            </div>
+
+
+                            <!-- DETAILS -->
+
+                            <div>
+
+                                <h2 data-submission-title>
+                                    Submission
+                                </h2>
+
+
+                                <p class="submission-meta">
+
+                                    <span
+                                        class="language"
+                                        data-submission-language>
+
+                                        -
+
+                                    </span>
+
+                                    <span>
+                                        •
+                                    </span>
+
+                                    <span>
+                                        Submitted
+                                    </span>
+
+                                    <span data-submission-date>
+                                        -
+                                    </span>
+
+                                </p>
+
+
+                                <!-- STUDENT INFORMATION -->
+
+                                <div
+                                    class="student-information"
+                                    data-reviewer-student-info
+                                    style="display:none;">
+
+                                    <span class="student-information-label">
+                                        SUBMITTED BY
+                                    </span>
+
+                                    <strong data-student-name>
+                                        -
+                                    </strong>
+
+                                    <span data-student-email>
+                                        -
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- STATUS -->
+
+                        <span
+                            class="submission-status"
+                            data-submission-status>
+
+                            -
+
+                        </span>
+
+                    </section>
+
+
+
+                    <!-- =================================================
+                         BODY
+                    ================================================= -->
+
+                    <div class="submission-body">
+
+
+                        <!-- =================================================
+                             PROGRESS
+                        ================================================= -->
+
+                        <section class="submission-section">
+
+                            <span class="section-label">
+                                PROGRESS
+                            </span>
+
+                            <h2 class="section-heading">
+                                Submission Status
+                            </h2>
+
+                            <div class="timeline-card">
+
+                                <div
+                                    class="status-timeline"
+                                    data-status-history>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+
+                        <!-- =================================================
+                             DESCRIPTION
+                        ================================================= -->
+
+                        <section class="submission-section">
+
+                            <span class="section-label">
+                                OVERVIEW
+                            </span>
+
+                            <h2 class="section-heading">
+                                Description
+                            </h2>
+
+                            <div class="description-card">
+
+                                <p data-submission-description>
+                                    No description provided.
+                                </p>
+
+                            </div>
+
+                        </section>
+
+
+
+                        <!-- =================================================
+                             SUBMITTED CODE
+                        ================================================= -->
+
+                        <section class="submission-section">
+
+                            <div class="code-heading-row">
+
+                                <div>
+
+                                    <span class="section-label">
+                                        SOURCE CODE
+                                    </span>
+
+                                    <h2
+                                        class="section-heading"
+                                        style="margin-bottom:0;">
+
+                                        Submitted Code
+
+                                    </h2>
+
+                                </div>
+
+
+                                <span
+                                    class="language-badge"
+                                    data-submission-language>
+
+                                    -
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="code-editor">
+
+
+                                <div class="code-editor-top">
+
+                                    <div class="editor-dots">
+
+                                        <span class="editor-dot"></span>
+
+                                        <span class="editor-dot"></span>
+
+                                        <span class="editor-dot"></span>
+
+                                    </div>
+
+
+                                    <span
+                                        class="editor-title"
+                                        data-editor-filename>
+
+                                        submitted-code
+
+                                    </span>
+
+                                </div>
+
+
+                                <div
+                                    class="code-display"
+                                    data-submission-code>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+
+
+                        <!-- =================================================
+                             REVIEW AREA
+                        ================================================= -->
+
+                        <div class="review-area">
+
+
+                            <!-- =================================================
+                                 REVIEW ACTION
+                            ================================================= -->
+
+                            <section
+                                class="side-card reviewer-only"
+                                data-reviewer-panel
+                                style="display:none;">
+
+                                <span class="side-card-label">
+                                    REVIEW ACTION
+                                </span>
+
+                                <h2>
+                                    Review Submission
+                                </h2>
+
+
+                                <!-- STATUS -->
+
+                                <div class="reviewer-action-group">
+
+                                    <label for="reviewStatus">
+                                        Review Status
+                                    </label>
+
+                                    <select id="reviewStatus">
+
+                                        <option value="Under Review">
+                                            Under Review
+                                        </option>
+
+                                        <option value="Changes Requested">
+                                            Changes Requested
+                                        </option>
+
+                                        <option value="Approved">
+                                            Approved
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- FEEDBACK -->
+
+                                <div class="reviewer-action-group">
+
+                                    <label for="reviewFeedback">
+                                        Final Feedback
+                                    </label>
+
+                                    <textarea
+                                        id="reviewFeedback"
+                                        rows="6"
+                                        placeholder="Write your final feedback for the student..."></textarea>
+
+                                </div>
+
+
+                                <!-- SUBMIT REVIEW -->
+
+                                <button
+                                    type="button"
+                                    id="submitReviewButton"
+                                    class="review-submit-btn">
+
+                                    Submit Review
+
+                                </button>
+
+
+                                <p
+                                    id="reviewMessage"
+                                    class="review-message"
+                                    style="display:none;">
+
+                                </p>
+
+                            </section>
+
+
+
+                            <!-- =================================================
+                                 REVIEWER COMMENTS
+                            ================================================= -->
+
+                            <section class="side-card">
+
+                                <span class="side-card-label">
+                                    REVIEW
+                                </span>
+
+                                <h2>
+
+                                    Reviewer Comments
+
+                                    <span
+                                        class="comment-count"
+                                        data-comment-count>
+
+                                    </span>
+
+                                </h2>
+
+
+                                <!-- ADD COMMENT -->
+
+                                <div
+                                    class="reviewer-comment-form reviewer-only"
+                                    style="display:none;">
+
+
+                                    <div class="reviewer-action-group">
+
+                                        <label for="commentType">
+                                            Comment Type
+                                        </label>
+
+                                        <select id="commentType">
+
+                                            <option value="GENERAL">
+                                                General Comment
+                                            </option>
+
+                                            <option value="LINE">
+                                                Line Comment
+                                            </option>
+
+                                        </select>
+
+                                    </div>
+
+
+                                    <div
+                                        class="reviewer-action-group"
+                                        id="lineNumberGroup"
+                                        style="display:none;">
+
+                                        <label for="commentLineNumber">
+                                            Line Number
+                                        </label>
+
+                                        <input
+                                            type="number"
+                                            id="commentLineNumber"
+                                            min="1"
+                                            placeholder="Enter line number">
+
+                                    </div>
+
+
+                                    <div class="reviewer-action-group">
+
+                                        <label for="commentText">
+                                            Comment
+                                        </label>
+
+                                        <textarea
+                                            id="commentText"
+                                            rows="4"
+                                            placeholder="Write your comment..."></textarea>
+
+                                    </div>
+
+
+                                    <button
+                                        type="button"
+                                        id="addCommentButton"
+                                        class="review-submit-btn">
+
+                                        Add Comment
+
+                                    </button>
+
+
+                                    <p
+                                        id="commentMessage"
+                                        class="review-message"
+                                        style="display:none;">
+
+                                    </p>
+
+                                </div>
+
+
+                                <!-- EXISTING COMMENTS -->
+
+                                <div
+                                    class="comments-container"
+                                    data-comments>
+
+                                </div>
+
+                            </section>
+
+
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             FINAL FEEDBACK
+                        ================================================= -->
+
+                        <section class="submission-section">
+
+                            <span class="section-label">
+                                FEEDBACK
+                            </span>
+
+                            <h2 class="section-heading">
+                                Final Feedback
+                            </h2>
+
+
+                            <div
+                                class="feedback-box"
+                                data-final-feedback>
+
+                                <p class="feedback-empty">
+                                    No final feedback provided yet.
+                                </p>
+
+                            </div>
+
+                        </section>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer class="dashboard-footer">
+
+        <div class="container">
+
+            <p>
+                © 2026 CodeReviewHub.
+                All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js">
+    </script>
+
+    <script src="js/api.js"></script>
+
+    <script src="js/common.js"></script>
+
+    <script src="js/auth.js"></script>
+
+    <script src="js/submission.js"></script>
+
+
+</body>
+
+</html>

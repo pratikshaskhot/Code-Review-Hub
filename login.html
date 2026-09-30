@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Login to CodeReviewHub - Online Code Submission and Review System"
+    >
+
+    <title>Login | CodeReviewHub</title>
+
+    <!-- Main website styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Authentication page styles -->
+    <link rel="stylesheet" href="css/auth.css">
+
+</head>
+
+
+<body class="auth-page">
+
+
+    <!-- ================= AUTH NAVBAR ================= -->
+
+    <header class="auth-navbar">
+
+        <div class="container auth-nav-container">
+
+            <a href="index.html" class="logo">
+
+                <span class="logo-icon">
+                    &lt;/&gt;
+                </span>
+
+                <span>
+                    CodeReviewHub
+                </span>
+
+            </a>
+
+            <a href="index.html" class="back-home">
+                ← Back to Home
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= LOGIN SECTION ================= -->
+
+    <main class="auth-main">
+
+        <div class="auth-wrapper">
+
+
+            <!-- LEFT INFORMATION PANEL -->
+
+            <section class="auth-info">
+
+                <div class="auth-info-content">
+
+                    <div class="auth-small-badge">
+                        &lt;/&gt;
+                    </div>
+
+                    <h1>
+                        Welcome back to
+                        <span>CodeReviewHub.</span>
+                    </h1>
+
+                    <p>
+                        Sign in to submit your code, track reviews,
+                        receive feedback, and improve your programming skills.
+                    </p>
+
+
+                    <div class="auth-feature-list">
+
+                        <div class="auth-feature">
+
+                            <div class="auth-feature-icon">
+                                ✓
+                            </div>
+
+                            <div>
+                                <strong>
+                                    Track your submissions
+                                </strong>
+
+                                <span>
+                                    Monitor every review from submission
+                                    to approval.
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="auth-feature">
+
+                            <div class="auth-feature-icon">
+                                #
+                            </div>
+
+                            <div>
+                                <strong>
+                                    Get meaningful feedback
+                                </strong>
+
+                                <span>
+                                    View line-level and general comments
+                                    from reviewers.
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="auth-feature">
+
+                            <div class="auth-feature-icon">
+                                ↑
+                            </div>
+
+                            <div>
+                                <strong>
+                                    Improve your code
+                                </strong>
+
+                                <span>
+                                    Learn from every review and make
+                                    better solutions.
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- LOGIN FORM -->
+
+            <section class="auth-card">
+
+                <div class="auth-card-header">
+
+                    <div class="mobile-logo">
+                        <span class="logo-icon">
+                            &lt;/&gt;
+                        </span>
+                    </div>
+
+                    <h2>
+                        Sign in
+                    </h2>
+
+                    <p>
+                        Enter your account details to continue.
+                    </p>
+
+                </div>
+
+
+                <!--
+                    Login form
+
+                    JavaScript will handle this form later
+                    and send the credentials to:
+
+                    POST /api/auth/login
+                -->
+
+                <form
+                    id="loginForm"
+                    class="auth-form"
+                    novalidate
+                >
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                        <small
+                            class="field-error"
+                            id="emailError"
+                        ></small>
+
+                    </div>
+
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <div class="label-row">
+
+                            <label for="password">
+                                Password
+                            </label>
+
+                            <a
+                                href="forgot-password.html"
+                                class="forgot-password"
+                                id="forgotPassword"
+                            >
+                                Forgot password?
+                            </a>
+
+                        </div>
+
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="togglePassword"
+                                aria-label="Show password"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="field-error"
+                            id="passwordError"
+                        ></small>
+
+                    </div>
+
+
+
+                    <!-- REMEMBER ME -->
+
+                    <div class="remember-row">
+
+                        <label class="checkbox-label">
+
+                            <input
+                                type="checkbox"
+                                id="rememberMe"
+                                name="rememberMe"
+                            >
+
+                            <span>
+                                Remember me
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+
+                    <!-- ERROR MESSAGE -->
+
+                    <div
+                        id="loginMessage"
+                        class="auth-message"
+                        role="alert"
+                        aria-live="polite"
+                    ></div>
+
+
+
+                    <!-- LOGIN BUTTON -->
+
+                    <button
+                        type="submit"
+                        class="auth-submit-btn"
+                        id="loginButton"
+                    >
+
+                        <span id="loginButtonText">
+                            Sign In
+                        </span>
+
+                        <span
+                            id="loginSpinner"
+                            class="button-spinner"
+                            hidden
+                        ></span>
+
+                    </button>
+
+
+                </form>
+
+
+
+                <!-- REGISTER LINK -->
+
+                <div class="auth-footer">
+
+                    <p>
+                        Don't have an account?
+
+                        <a href="register.html">
+                            Create an account
+                        </a>
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="auth-footer-bottom">
+
+        <p>
+            © 2026 CodeReviewHub. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <!--
+        Authentication JavaScript will be connected later.
+
+        We are NOT adding auth.js functionality yet.
+    -->
+        <script src="js/api.js"></script>
+        <script src="js/auth.js"></script>
+
+</body>
+
+</html>

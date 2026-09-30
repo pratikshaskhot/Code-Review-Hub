@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Create your CodeReviewHub account">
+
+    <title>Create Account | CodeReviewHub</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Authentication CSS -->
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+
+<body class="auth-page">
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+    <header class="auth-navbar">
+
+        <div class="container auth-nav-container">
+
+            <a href="index.html" class="logo">
+                <span class="logo-icon">&lt;/&gt;</span>
+                CodeReviewHub
+            </a>
+
+            <a href="index.html" class="back-home">
+                ← Back to Home
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN AUTH SECTION
+    ========================== -->
+    <main class="auth-main">
+
+        <div class="auth-wrapper">
+
+            <!-- =========================
+                 LEFT INFORMATION PANEL
+            ========================== -->
+            <section class="auth-info">
+
+                <div class="auth-info-content">
+
+                    <span class="auth-small-badge">
+                        🚀 Join CodeReviewHub
+                    </span>
+
+                    <h1>
+                        Start your
+                        <span>coding journey.</span>
+                    </h1>
+
+                    <p>
+                        Create your account and start submitting,
+                        reviewing, and improving code with
+                        CodeReviewHub.
+                    </p>
+
+
+                    <!-- FEATURES -->
+
+                    <div class="auth-feature-list">
+
+                        <div class="auth-feature">
+
+                            <div class="auth-feature-icon">
+                                ✓
+                            </div>
+
+                            <div>
+                                <h3>Submit Your Code</h3>
+
+                                <p>
+                                    Upload and manage your coding
+                                    submissions easily.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="auth-feature">
+
+                            <div class="auth-feature-icon">
+                                ✓
+                            </div>
+
+                            <div>
+                                <h3>Get Expert Feedback</h3>
+
+                                <p>
+                                    Receive useful comments and
+                                    suggestions on your code.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="auth-feature">
+
+                            <div class="auth-feature-icon">
+                                ✓
+                            </div>
+
+                            <div>
+                                <h3>Improve Your Skills</h3>
+
+                                <p>
+                                    Track your progress and improve
+                                    your programming skills.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 REGISTER CARD
+            ========================== -->
+            <section class="auth-card">
+
+                <!-- Mobile Logo -->
+
+                <div class="mobile-logo">
+
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon">&lt;/&gt;</span>
+                        CodeReviewHub
+                    </a>
+
+                </div>
+
+
+                <!-- CARD HEADER -->
+
+                <div class="auth-card-header">
+
+                    <span class="auth-card-icon">
+                        ✨
+                    </span>
+
+                    <h2>Create your account</h2>
+
+                    <p>
+                        Join CodeReviewHub and start improving
+                        your code.
+                    </p>
+
+                </div>
+
+
+                <!-- =========================
+                     REGISTER FORM
+                ========================== -->
+
+                <form
+                    id="registerForm"
+                    class="auth-form"
+                    autocomplete="on"
+                >
+
+                    <!-- NAME -->
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required
+                        >
+
+                        <small
+                            id="nameError"
+                            class="field-error"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                        <small
+                            id="emailError"
+                            class="field-error"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- ROLE -->
+
+                    <div class="form-group">
+
+                        <label for="role">
+                            Account Type
+                        </label>
+
+                        <select
+                            id="role"
+                            name="role"
+                            required
+                        >
+
+                            <option value="">
+                                Select your role
+                            </option>
+
+                            <option value="STUDENT">
+                                Student
+                            </option>
+
+                            <option value="REVIEWER">
+                                Reviewer
+                            </option>
+
+                        </select>
+
+                        <small class="form-hint">
+                            Students submit code. Reviewers review
+                            and provide feedback.
+                        </small>
+
+                        <small
+                            id="roleError"
+                            class="field-error"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Create a password"
+                                autocomplete="new-password"
+                                minlength="6"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="togglePassword"
+                                aria-label="Show password"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                        <small class="form-hint">
+                            Password must contain at least 6 characters.
+                        </small>
+
+                        <small
+                            id="passwordError"
+                            class="field-error"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- CONFIRM PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+                            Confirm Password
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                placeholder="Re-enter your password"
+                                autocomplete="new-password"
+                                minlength="6"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="toggleConfirmPassword"
+                                aria-label="Show confirm password"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                        <small
+                            id="confirmPasswordError"
+                            class="field-error"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- TERMS -->
+
+                    <div class="remember-row">
+
+                        <label class="checkbox-label">
+
+                            <input
+                                type="checkbox"
+                                id="terms"
+                                name="terms"
+                                required
+                            >
+
+                            <span>
+                                I agree to the
+                                <a href="#">
+                                    Terms & Conditions
+                                </a>
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- MESSAGE -->
+
+                    <div
+                        id="registerMessage"
+                        class="auth-message"
+                        role="alert"
+                        aria-live="polite"
+                    ></div>
+
+
+                    <!-- SUBMIT BUTTON -->
+
+                    <button
+                        type="submit"
+                        class="auth-submit-btn"
+                        id="registerButton"
+                    >
+
+                        <span id="registerButtonText">
+                            Create Account
+                        </span>
+
+                        <span
+                            id="registerSpinner"
+                            class="button-spinner"
+                            hidden
+                        ></span>
+
+                    </button>
+
+                </form>
+
+
+                <!-- LOGIN LINK -->
+
+                <div class="auth-footer">
+
+                    <p>
+                        Already have an account?
+
+                        <a href="login.html">
+                            Sign in
+                        </a>
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="auth-footer-bottom">
+
+        <p>
+            © 2026 CodeReviewHub.
+            All rights reserved.
+        </p>
+
+    </footer>
+    <script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+
+</body>
+</html>

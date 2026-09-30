@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Review Submission | CodeReviewHub</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <nav class="navbar">
+
+        <div class="navbar-brand">
+
+            <span class="logo">
+                CodeReviewHub
+            </span>
+
+        </div>
+
+
+        <div class="navbar-links">
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="profile.html">
+                Profile
+            </a>
+
+            <a
+                href="#"
+                id="logoutButton"
+            >
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="page-container">
+
+
+
+        <!-- =================================================
+             SUBMISSION INFORMATION
+        ================================================== -->
+
+        <section class="side-card">
+
+            <span class="side-card-label">
+                REVIEW
+            </span>
+
+
+            <h1>
+                Review Submission
+            </h1>
+
+
+            <div class="submission-info">
+
+
+                <!-- STUDENT -->
+
+                <p>
+
+                    <strong>
+                        Student:
+                    </strong>
+
+                    <span data-student-name>
+                        Loading...
+                    </span>
+
+                </p>
+
+
+
+                <!-- PROJECT -->
+
+                <p>
+
+                    <strong>
+                        Project:
+                    </strong>
+
+                    <span data-project-title>
+                        Loading...
+                    </span>
+
+                </p>
+
+
+
+                <!-- STATUS -->
+
+                <p>
+
+                    <strong>
+                        Status:
+                    </strong>
+
+                    <span data-submission-status>
+                        Loading...
+                    </span>
+
+                </p>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             STUDENT DESCRIPTION
+        ================================================== -->
+
+        <section class="side-card">
+
+            <span class="side-card-label">
+                SUBMISSION DETAILS
+            </span>
+
+
+            <h2>
+                Student Description
+            </h2>
+
+
+            <div class="submission-description">
+
+                <p data-submission-description>
+                    Loading description...
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PROGRESS
+        ================================================== -->
+
+        <section class="side-card">
+
+            <span class="side-card-label">
+                PROGRESS
+            </span>
+
+
+            <h2>
+                Submission Progress
+            </h2>
+
+
+            <div
+                id="reviewProgress"
+                class="review-progress"
+            ></div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             REVIEWER ACTION
+        ================================================== -->
+
+        <section class="side-card reviewer-only">
+
+            <span class="side-card-label">
+                REVIEW ACTION
+            </span>
+
+
+            <h2>
+                Update Review
+            </h2>
+
+
+
+            <!-- REVIEW STATUS -->
+
+            <div class="reviewer-action-group">
+
+                <label for="reviewStatus">
+
+                    Review Status
+
+                </label>
+
+
+                <select id="reviewStatus">
+
+                    <option value="Under Review">
+
+                        Under Review
+
+                    </option>
+
+
+                    <option value="Changes Requested">
+
+                        Changes Requested
+
+                    </option>
+
+
+                    <option value="Approved">
+
+                        Approved
+
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- FINAL FEEDBACK -->
+
+            <div class="reviewer-action-group">
+
+                <label for="reviewFeedback">
+
+                    Final Feedback
+
+                </label>
+
+
+                <textarea
+                    id="reviewFeedback"
+                    rows="6"
+                    placeholder="Write your final feedback for the student..."
+                ></textarea>
+
+            </div>
+
+
+
+            <!-- SUBMIT REVIEW -->
+
+            <button
+                type="button"
+                id="submitReviewButton"
+                class="review-submit-btn"
+            >
+
+                Submit Review
+
+            </button>
+
+
+
+            <!-- REVIEW MESSAGE -->
+
+            <p
+                id="reviewMessage"
+                class="review-message"
+                style="display:none;"
+            ></p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             SUBMITTED CODE
+        ================================================== -->
+
+        <section class="side-card">
+
+            <span class="side-card-label">
+                SOURCE CODE
+            </span>
+
+
+            <h2>
+                Submitted Code
+            </h2>
+
+
+            <pre class="code-viewer">
+
+<code data-submitted-code></code>
+
+            </pre>
+
+        </section>
+
+
+
+        <!-- =================================================
+             REVIEWER COMMENTS
+             
+             This section remains available for now.
+             We will move comments/feedback to the separate
+             page after this file is working.
+        ================================================== -->
+
+        <section class="side-card">
+
+            <span class="side-card-label">
+                REVIEW
+            </span>
+
+
+            <h2>
+
+                Reviewer Comments
+
+                <span
+                    class="comment-count"
+                    data-comment-count
+                ></span>
+
+            </h2>
+
+
+
+            <!-- ADD COMMENT -->
+
+            <div class="reviewer-comment-form">
+
+
+                <!-- COMMENT TYPE -->
+
+                <div class="reviewer-action-group">
+
+                    <label for="commentType">
+
+                        Comment Type
+
+                    </label>
+
+
+                    <select id="commentType">
+
+                        <option value="GENERAL">
+
+                            General Comment
+
+                        </option>
+
+
+                        <option value="LINE">
+
+                            Line Comment
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- LINE NUMBER -->
+
+                <div
+                    class="reviewer-action-group"
+                    id="lineNumberGroup"
+                    style="display:none;"
+                >
+
+                    <label for="commentLineNumber">
+
+                        Line Number
+
+                    </label>
+
+
+                    <input
+                        type="number"
+                        id="commentLineNumber"
+                        min="1"
+                        placeholder="Enter line number"
+                    >
+
+                </div>
+
+
+
+                <!-- COMMENT -->
+
+                <div class="reviewer-action-group">
+
+                    <label for="commentText">
+
+                        Comment
+
+                    </label>
+
+
+                    <textarea
+                        id="commentText"
+                        rows="4"
+                        placeholder="Write your comment..."
+                    ></textarea>
+
+                </div>
+
+
+
+                <!-- ADD COMMENT BUTTON -->
+
+                <button
+                    type="button"
+                    id="addCommentButton"
+                    class="review-submit-btn"
+                >
+
+                    Add Comment
+
+                </button>
+
+
+
+                <!-- COMMENT MESSAGE -->
+
+                <p
+                    id="commentMessage"
+                    class="review-message"
+                    style="display:none;"
+                ></p>
+
+
+            </div>
+
+
+
+            <!-- EXISTING COMMENTS -->
+
+            <div
+                class="comments-container"
+                data-comments
+            ></div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="JavaScript/api.js"></script>
+
+    <script src="JavaScript/review.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reviewer Dashboard | CodeReviewHub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="dashboard-navbar">
+
+        <div class="dashboard-nav-container">
+
+            <a href="index.html" class="dashboard-logo">
+    <span class="logo-icon">&lt;/&gt;</span>
+    <span>CodeReviewHub</span>
+</a>
+
+            <nav class="dashboard-nav-links">
+
+                <a href="reviewer-dashboard.html" class="active">
+                    Dashboard
+                </a>
+
+                <a href="profile.html">
+                    Profile
+                </a>
+
+                <button class="logout-btn" id="logoutBtn">
+                    Logout
+                </button>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+    <main class="reviewer-main">
+
+        <div class="dashboard-container">
+
+            <!-- ================= WELCOME ================= -->
+            <section class="reviewer-welcome">
+
+                <div>
+
+                    <span class="dashboard-badge">
+                        👨‍💻 Reviewer Panel
+                    </span>
+
+                    <h1>
+                        Review Student Submissions
+                    </h1>
+
+                    <p>
+                        Review code, provide useful feedback,
+                        add line comments and track submission status.
+                    </p>
+
+                </div>
+
+                <div class="reviewer-avatar-large">
+                    R
+                </div>
+
+            </section>
+
+
+            <!-- ================= STATS ================= -->
+            <section class="stats-grid">
+
+                <!-- Total -->
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📋
+                    </div>
+
+                    <div class="stat-content">
+                        <span>Total Submissions</span>
+                        <strong>24</strong>
+                    </div>
+
+                </div>
+
+
+                <!-- Pending -->
+                <div class="stat-card">
+
+                    <div class="stat-icon pending-icon">
+                        ⏳
+                    </div>
+
+                    <div class="stat-content">
+                        <span>Pending Review</span>
+                        <strong>8</strong>
+                    </div>
+
+                </div>
+
+
+                <!-- Changes -->
+                <div class="stat-card">
+
+                    <div class="stat-icon changes-icon">
+                        🔄
+                    </div>
+
+                    <div class="stat-content">
+                        <span>Changes Requested</span>
+                        <strong>5</strong>
+                    </div>
+
+                </div>
+
+
+                <!-- Approved -->
+                <div class="stat-card">
+
+                    <div class="stat-icon approved-icon">
+                        ✓
+                    </div>
+
+                    <div class="stat-content">
+                        <span>Approved</span>
+                        <strong>11</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= FILTER SECTION ================= -->
+            <section class="reviewer-filter-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>All Submissions</h2>
+
+                        <p>
+                            Review and manage student code submissions.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="reviewer-filters">
+
+                    <div class="filter-group">
+
+                        <label for="statusFilter">
+                            Status
+                        </label>
+
+                        <select id="statusFilter">
+
+                            <option value="all">
+                                All Statuses
+                            </option>
+
+                            <option value="submitted">
+                                Submitted
+                            </option>
+
+                            <option value="under-review">
+                                Under Review
+                            </option>
+
+                            <option value="changes-requested">
+                                Changes Requested
+                            </option>
+
+                            <option value="approved">
+                                Approved
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="filter-group">
+
+                        <label for="languageFilter">
+                            Language
+                        </label>
+
+                        <select id="languageFilter">
+
+                            <option value="all">
+                                All Languages
+                            </option>
+
+                            <option value="python">
+                                Python
+                            </option>
+
+                            <option value="javascript">
+                                JavaScript
+                            </option>
+
+                            <option value="java">
+                                Java
+                            </option>
+
+                            <option value="cpp">
+                                C++
+                            </option>
+
+                            <option value="csharp">
+                                C#
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="reviewer-search">
+
+                        <label for="submissionSearch">
+                            Search
+                        </label>
+
+                        <input
+                            type="text"
+                            id="submissionSearch"
+                            placeholder="Search by title or student..."
+                        >
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= SUBMISSION TABLE ================= -->
+            <section class="reviewer-submissions-section">
+
+                <div class="submission-table-wrapper">
+
+                    <table class="reviewer-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Submission
+                                </th>
+
+                                <th>
+                                    Student
+                                </th>
+
+                                <th>
+                                    Language
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Submitted
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <!-- Submission 1 -->
+                            <tr>
+
+                                <td>
+
+                                    <div class="submission-table-title">
+
+                                        <div class="table-code-icon">
+                                            &lt;/&gt;
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Student Management System
+                                            </strong>
+
+                                            <span>
+                                                #CRH-001
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="student-info">
+
+                                        <div class="student-avatar">
+                                            A
+                                        </div>
+
+                                        <span>
+                                            Amit Sharma
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+                                    <span class="language-badge">
+                                        Python
+                                    </span>
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status-badge status-under-review">
+                                        Under Review
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+                                    Sep 15, 2026
+                                </td>
+
+
+                                <td>
+
+                                    <a
+                                        href="submission.html"
+                                        class="review-btn"
+                                    >
+                                        Review →
+                                    </a>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Submission 2 -->
+                            <tr>
+
+                                <td>
+
+                                    <div class="submission-table-title">
+
+                                        <div class="table-code-icon">
+                                            &lt;/&gt;
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Weather Application
+                                            </strong>
+
+                                            <span>
+                                                #CRH-002
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="student-info">
+
+                                        <div class="student-avatar">
+                                            P
+                                        </div>
+
+                                        <span>
+                                            Priya Patil
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+                                    <span class="language-badge">
+                                        JavaScript
+                                    </span>
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status-badge status-submitted">
+                                        Submitted
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+                                    Sep 14, 2026
+                                </td>
+
+
+                                <td>
+
+                                    <a
+                                        href="submission.html"
+                                        class="review-btn"
+                                    >
+                                        Review →
+                                    </a>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Submission 3 -->
+                            <tr>
+
+                                <td>
+
+                                    <div class="submission-table-title">
+
+                                        <div class="table-code-icon">
+                                            &lt;/&gt;
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Library Management
+                                            </strong>
+
+                                            <span>
+                                                #CRH-003
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="student-info">
+
+                                        <div class="student-avatar">
+                                            R
+                                        </div>
+
+                                        <span>
+                                            Rahul Deshmukh
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+                                    <span class="language-badge">
+                                        Java
+                                    </span>
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status-badge status-changes">
+                                        Changes Requested
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+                                    Sep 13, 2026
+                                </td>
+
+
+                                <td>
+
+                                    <a
+                                        href="submission.html"
+                                        class="review-btn"
+                                    >
+                                        Review →
+                                    </a>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Submission 4 -->
+                            <tr>
+
+                                <td>
+
+                                    <div class="submission-table-title">
+
+                                        <div class="table-code-icon">
+                                            &lt;/&gt;
+                                        </div>
+
+                                        <div>
+
+                                            <strong>
+                                                Portfolio Website
+                                            </strong>
+
+                                            <span>
+                                                #CRH-004
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="student-info">
+
+                                        <div class="student-avatar">
+                                            S
+                                        </div>
+
+                                        <span>
+                                            Sneha Kulkarni
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+                                    <span class="language-badge">
+                                        HTML / CSS
+                                    </span>
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status-badge status-approved">
+                                        Approved
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+                                    Sep 12, 2026
+                                </td>
+
+
+                                <td>
+
+                                    <a
+                                        href="submission.html"
+                                        class="review-btn"
+                                    >
+                                        View →
+                                    </a>
+
+                                </td>
+
+                            </tr>
+
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= REVIEW GUIDELINES ================= -->
+            <section class="reviewer-guidelines">
+
+                <div class="guidelines-icon">
+                    💡
+                </div>
+
+                <div>
+
+                    <h3>
+                        Review Guidelines
+                    </h3>
+
+                    <p>
+                        Give constructive feedback. Use line comments
+                        for specific code issues and general comments
+                        for overall suggestions. Update the status after
+                        completing your review.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="dashboard-footer">
+
+        <p>
+            © 2026 CodeReviewHub. Built for better code reviews.
+        </p>
+
+    </footer>
+
+
+<script src="js/api.js"></script>
+<script src="js/common.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/reviewer.js"></script>
+
+</body>
+</html>

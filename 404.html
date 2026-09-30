@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Page Not Found | CodeReviewHub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        /* ================= 404 PAGE ================= */
+
+        .error-page {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px;
+
+            box-sizing: border-box;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    rgba(37, 99, 235, 0.15),
+                    transparent 40%
+                ),
+                #0b1120;
+
+            color: #ffffff;
+        }
+
+
+        .error-container {
+            width: 100%;
+            max-width: 650px;
+
+            text-align: center;
+        }
+
+
+        .error-logo {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 10px;
+
+            margin-bottom: 45px;
+
+            color: #ffffff;
+
+            font-size: 20px;
+            font-weight: 700;
+
+            text-decoration: none;
+        }
+
+
+        .error-logo-icon {
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: #2563eb;
+
+            font-size: 20px;
+        }
+
+
+        .error-number {
+            margin: 0;
+
+            color: #3b82f6;
+
+            font-size: clamp(100px, 20vw, 180px);
+
+            line-height: 0.9;
+
+            font-weight: 800;
+
+            letter-spacing: -8px;
+
+            text-shadow:
+                0 10px 40px rgba(37, 99, 235, 0.2);
+        }
+
+
+        .error-title {
+            margin: 30px 0 12px;
+
+            color: #ffffff;
+
+            font-size: 32px;
+        }
+
+
+        .error-description {
+            max-width: 500px;
+
+            margin: 0 auto;
+
+            color: #94a3b8;
+
+            font-size: 16px;
+
+            line-height: 1.7;
+        }
+
+
+        .error-actions {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 12px;
+
+            margin-top: 30px;
+        }
+
+
+        .error-primary-btn,
+        .error-secondary-btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 45px;
+
+            padding: 0 20px;
+
+            border-radius: 8px;
+
+            font-family: inherit;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            text-decoration: none;
+
+            transition: 0.2s ease;
+        }
+
+
+        .error-primary-btn {
+            background: #2563eb;
+
+            border: 1px solid #2563eb;
+
+            color: #ffffff;
+        }
+
+
+        .error-primary-btn:hover {
+            background: #1d4ed8;
+
+            transform: translateY(-2px);
+        }
+
+
+        .error-secondary-btn {
+            background: transparent;
+
+            border: 1px solid #334155;
+
+            color: #cbd5e1;
+        }
+
+
+        .error-secondary-btn:hover {
+            background: #172033;
+
+            color: #ffffff;
+
+            border-color: #475569;
+        }
+
+
+        .error-help {
+            margin-top: 45px;
+
+            color: #64748b;
+
+            font-size: 12px;
+        }
+
+
+        .error-help a {
+            color: #60a5fa;
+
+            text-decoration: none;
+        }
+
+
+        .error-help a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 500px) {
+
+            .error-page {
+                padding: 20px;
+            }
+
+            .error-logo {
+                margin-bottom: 35px;
+            }
+
+            .error-number {
+                letter-spacing: -4px;
+            }
+
+            .error-title {
+                font-size: 26px;
+            }
+
+            .error-description {
+                font-size: 14px;
+            }
+
+            .error-actions {
+                flex-direction: column;
+            }
+
+            .error-primary-btn,
+            .error-secondary-btn {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <main class="error-page">
+
+        <div class="error-container">
+
+
+            <!-- Logo -->
+
+            <a
+                href="index.html"
+                class="error-logo"
+            >
+
+                <span class="error-logo-icon">
+                    ⌘
+                </span>
+
+                <span>
+                    CodeReviewHub
+                </span>
+
+            </a>
+
+
+            <!-- Error -->
+
+            <h1 class="error-number">
+                404
+            </h1>
+
+
+            <h2 class="error-title">
+                Page Not Found
+            </h2>
+
+
+            <p class="error-description">
+
+                Oops! The page you are looking for
+                doesn't exist or may have been moved.
+                Let's get you back to CodeReviewHub.
+
+            </p>
+
+
+            <!-- Buttons -->
+
+            <div class="error-actions">
+
+                <a
+                    href="index.html"
+                    class="error-primary-btn"
+                >
+                    ← Back to Home
+                </a>
+
+
+                <a
+                    href="dashboard.html"
+                    class="error-secondary-btn"
+                >
+                    Go to Dashboard
+                </a>
+
+            </div>
+
+
+            <!-- Help -->
+
+            <p class="error-help">
+
+                Need help?
+
+                <a href="login.html">
+                    Sign in to your account
+                </a>
+
+            </p>
+
+
+        </div>
+
+    </main>
+
+
+</body>
+
+</html>

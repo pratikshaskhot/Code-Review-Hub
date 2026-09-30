@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Submit your code for review"
+    >
+
+    <title>Submit Code | CodeReviewHub</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Dashboard CSS -->
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <!-- Highlight.js -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/vs2015.min.css"
+    >
+
+    <!-- =========================================
+         TEMPORARY EDITOR SUPPORT
+         The actual syntax highlighting will be
+         connected in submission.js next.
+    ========================================== -->
+
+    <style>
+
+        .code-editor {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .editor-body {
+            position: relative;
+            display: flex;
+            min-height: 420px;
+            overflow: hidden;
+        }
+
+
+        /* =========================================
+           LINE NUMBERS
+        ========================================== */
+
+        .line-numbers {
+            flex: 0 0 55px;
+            width: 55px;
+
+            padding: 18px 10px;
+
+            box-sizing: border-box;
+
+            background: #0b1120;
+            color: #64748b;
+
+            text-align: right;
+
+            font-family:
+                "Consolas",
+                "Courier New",
+                monospace;
+
+            font-size: 14px;
+            line-height: 1.6;
+
+            white-space: pre;
+
+            overflow: hidden;
+
+            user-select: none;
+
+            border-right: 1px solid #1e293b;
+
+            z-index: 5;
+        }
+
+
+        /* =========================================
+           HIGHLIGHT LAYER
+        ========================================== */
+
+        .code-highlight {
+            position: absolute;
+
+            top: 0;
+            left: 55px;
+            right: 0;
+            bottom: 0;
+
+            margin: 0;
+            padding: 18px;
+
+            box-sizing: border-box;
+
+            font-family:
+                "Consolas",
+                "Courier New",
+                monospace;
+
+            font-size: 14px;
+            line-height: 1.6;
+
+            white-space: pre;
+
+            overflow: hidden;
+
+            pointer-events: none;
+
+            background: #1e1e1e;
+
+            color: #d4d4d4;
+
+            z-index: 1;
+        }
+
+        .code-highlight code {
+            font-family:
+                "Consolas",
+                "Courier New",
+                monospace;
+
+            font-size: 14px;
+            line-height: 1.6;
+
+            white-space: pre;
+
+            background: transparent;
+        }
+
+
+        /* =========================================
+           ACTUAL TEXTAREA
+           
+           IMPORTANT:
+           Keep text visible until submission.js
+           starts the syntax-highlighting layer.
+        ========================================== */
+
+        .editor-body textarea#code {
+
+            position: absolute;
+
+            top: 0;
+            left: 55px;
+            right: 0;
+            bottom: 0;
+
+            width: calc(100% - 55px);
+            height: 100%;
+
+            box-sizing: border-box;
+
+            margin: 0;
+            padding: 18px;
+
+            border: none;
+            outline: none;
+
+            resize: none;
+
+            background: transparent;
+
+            /* FIX:
+               Your code must remain visible. */
+            color: #d4d4d4;
+
+            caret-color: #ffffff;
+
+            font-family:
+                "Consolas",
+                "Courier New",
+                monospace;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            white-space: pre;
+
+            overflow: auto;
+
+            z-index: 2;
+
+            tab-size: 4;
+
+            -moz-tab-size: 4;
+        }
+
+
+        .editor-body textarea#code::selection {
+            background: rgba(37, 99, 235, 0.35);
+        }
+
+
+        .editor-body textarea#code::placeholder {
+            color: #64748b;
+        }
+
+
+        .editor-language {
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================== */
+
+        @media (max-width: 768px) {
+
+            .line-numbers {
+                flex-basis: 45px;
+                width: 45px;
+
+                padding-left: 6px;
+                padding-right: 6px;
+
+                font-size: 13px;
+            }
+
+            .code-highlight {
+                left: 45px;
+                padding: 14px;
+            }
+
+            .editor-body textarea#code {
+                left: 45px;
+                width: calc(100% - 45px);
+                padding: 14px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body class="dashboard-page">
+
+
+    <!-- =================================
+         NAVBAR
+    ================================== -->
+
+    <header class="dashboard-navbar">
+
+        <div class="container dashboard-nav-container">
+
+
+            <!-- EXISTING LOGO
+                 DO NOT CHANGE THIS -->
+
+            <a
+                href="index.html"
+                class="logo"
+            >
+
+                <span class="logo-icon">
+                    &lt;/&gt;
+                </span>
+
+                CodeReviewHub
+
+            </a>
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="dashboard-nav">
+
+                <a href="dashboard.html">
+                    Dashboard
+                </a>
+
+                <a
+                    href="submit.html"
+                    class="active"
+                >
+                    Submit Code
+                </a>
+
+                <a href="profile.html">
+                    Profile
+                </a>
+
+            </nav>
+
+
+            <!-- USER -->
+
+            <div class="dashboard-user">
+
+                <div
+                    class="user-avatar"
+                    data-user-avatar
+                >
+                    S
+                </div>
+
+                <div class="user-info">
+
+                    <span
+                        class="user-name"
+                        data-user-name
+                    >
+                        Student
+                    </span>
+
+                    <span
+                        class="user-role"
+                        data-user-role
+                    >
+                        STUDENT
+                    </span>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="logout-btn"
+                    id="logoutButton"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =================================
+         MAIN CONTENT
+    ================================== -->
+
+    <main class="submit-main">
+
+        <div class="container">
+
+
+            <!-- PAGE HEADER -->
+
+            <section class="submit-header">
+
+                <div>
+
+                    <span class="dashboard-label">
+                        CODE SUBMISSION
+                    </span>
+
+                    <h1>
+                        Submit Your <span>Code</span>
+                    </h1>
+
+                    <p>
+                        Submit your code and get valuable feedback
+                        from a reviewer.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 SUBMISSION FORM
+            ================================== -->
+
+            <section class="submit-card">
+
+                <form
+                    id="submissionForm"
+                    class="submission-form"
+                >
+
+
+                    <!-- TITLE -->
+
+                    <div class="submit-form-group">
+
+                        <label for="title">
+                            Submission Title
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="title"
+                            name="title"
+                            placeholder="e.g. Student Management System"
+                            maxlength="100"
+                            required
+                        >
+
+                        <small
+                            id="titleError"
+                            class="submit-error"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- LANGUAGE -->
+
+                    <div class="submit-form-group">
+
+                        <label for="language">
+                            Programming Language
+                            <span>*</span>
+                        </label>
+
+                        <select
+                            id="language"
+                            name="language"
+                            required
+                        >
+
+                            <option value="">
+                                Select programming language
+                            </option>
+
+                            <option value="JavaScript">
+                                JavaScript
+                            </option>
+
+                            <option value="Python">
+                                Python
+                            </option>
+
+                            <option value="Java">
+                                Java
+                            </option>
+
+                            <option value="C">
+                                C
+                            </option>
+
+                            <option value="C++">
+                                C++
+                            </option>
+
+                            <option value="C#">
+                                C#
+                            </option>
+
+                            <option value="PHP">
+                                PHP
+                            </option>
+
+                        </select>
+
+                        <small
+                            id="languageError"
+                            class="submit-error"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="submit-form-group">
+
+                        <label for="description">
+                            Description
+                        </label>
+
+                        <textarea
+                            id="description"
+                            name="description"
+                            rows="4"
+                            maxlength="500"
+                            placeholder="Briefly explain what your code does..."
+                        ></textarea>
+
+                        <div class="textarea-info">
+
+                            <span>
+                                Optional
+                            </span>
+
+                            <span
+                                id="descriptionCount"
+                                data-description-count
+                            >
+                                0 / 500
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================
+                         CODE EDITOR
+                    ================================== -->
+
+                    <div class="submit-form-group">
+
+                        <div class="code-label-row">
+
+                            <label for="code">
+                                Your Code
+                                <span>*</span>
+                            </label>
+
+                            <span class="code-required">
+                                Required
+                            </span>
+
+                        </div>
+
+
+                        <div class="code-editor">
+
+
+                            <!-- EDITOR HEADER -->
+
+                            <div class="editor-header">
+
+                                <div class="editor-dots">
+
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+
+                                </div>
+
+                                <span
+                                    id="editorLanguage"
+                                    class="editor-language"
+                                >
+                                    CODE
+                                </span>
+
+                            </div>
+
+
+                            <!-- EDITOR BODY -->
+
+                            <div class="editor-body">
+
+
+                                <!-- LINE NUMBERS -->
+
+                                <div
+                                    class="line-numbers"
+                                    id="lineNumbers"
+                                >
+                                    1
+                                </div>
+
+
+                                <!-- HIGHLIGHTING LAYER -->
+
+                                <pre
+                                    id="codeHighlight"
+                                    class="code-highlight"
+                                    aria-hidden="true"
+                                ><code id="highlightedCode"></code></pre>
+
+
+                                <!-- ACTUAL CODE INPUT -->
+
+                                <textarea
+                                    id="code"
+                                    name="code"
+                                    spellcheck="false"
+                                    autocomplete="off"
+                                    autocorrect="off"
+                                    autocapitalize="off"
+                                    placeholder="// Write or paste your code here..."
+                                    required
+                                ></textarea>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- CODE INFORMATION -->
+
+                        <div class="code-info">
+
+                            <span id="lineCount">
+                                Lines: 1
+                            </span>
+
+                            <span id="characterCount">
+                                Characters: 0
+                            </span>
+
+                        </div>
+
+
+                        <small
+                            id="codeError"
+                            class="submit-error"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- MESSAGE -->
+
+                    <div
+                        id="submissionMessage"
+                        class="submit-message"
+                        role="alert"
+                        aria-live="polite"
+                    ></div>
+
+
+                    <!-- FORM ACTIONS -->
+
+                    <div class="submit-actions">
+
+                        <a
+                            href="dashboard.html"
+                            class="cancel-btn"
+                        >
+                            Cancel
+                        </a>
+
+                        <button
+                            type="submit"
+                            class="submit-form-btn"
+                            id="submitCodeButton"
+                        >
+
+                            <span id="submitButtonText">
+                                Submit Code for Review
+                            </span>
+
+                            <span
+                                id="submitSpinner"
+                                class="button-spinner"
+                                hidden
+                            ></span>
+
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+            </section>
+
+
+            <!-- =================================
+                 SUBMISSION TIPS
+            ================================== -->
+
+            <section class="submission-tips">
+
+                <div class="tips-icon">
+                    💡
+                </div>
+
+                <div>
+
+                    <h3>
+                        Before submitting
+                    </h3>
+
+                    <p>
+                        Make sure your code is complete,
+                        readable, and includes any important
+                        information the reviewer should know.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =================================
+         FOOTER
+    ================================== -->
+
+    <footer class="dashboard-footer">
+
+        <div class="container">
+
+            <p>
+                © 2026 CodeReviewHub.
+                All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =================================
+         JAVASCRIPT
+    ================================== -->
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"
+    ></script>
+
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/submission.js"></script>
+
+</body>
+
+</html>

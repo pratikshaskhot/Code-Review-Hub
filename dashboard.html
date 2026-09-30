@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Student Dashboard - CodeReviewHub">
+
+    <title>Student Dashboard | CodeReviewHub</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Dashboard CSS -->
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body class="dashboard-page">
+
+    <!-- =================================
+         NAVBAR
+    ================================== -->
+
+    <header class="dashboard-navbar">
+
+        <div class="container dashboard-nav-container">
+
+            <!-- Logo -->
+
+            <a href="index.html" class="logo">
+
+                <span class="logo-icon">
+                    &lt;/&gt;
+                </span>
+
+                CodeReviewHub
+
+            </a>
+
+
+            <!-- Navigation -->
+
+            <nav class="dashboard-nav">
+
+                <a href="dashboard.html" class="active">
+                    Dashboard
+                </a>
+
+                <a href="submit.html">
+                    Submit Code
+                </a>
+
+                <a href="profile.html">
+                    Profile
+                </a>
+
+            </nav>
+
+
+            <!-- User Area -->
+
+            <div class="dashboard-user">
+
+                <div
+                    class="user-avatar"
+                    data-user-avatar
+                >
+                    U
+                </div>
+
+                <div class="user-info">
+
+                    <span
+                        class="user-name"
+                        data-user-name
+                    >
+                        User
+                    </span>
+
+                    <span
+                        class="user-role"
+                        data-user-role
+                    >
+                        STUDENT
+                    </span>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="logout-btn"
+                    id="logoutButton"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =================================
+         MAIN CONTENT
+    ================================== -->
+
+    <main class="dashboard-main">
+
+        <div class="container">
+
+
+            <!-- =================================
+                 DASHBOARD HEADER
+            ================================== -->
+
+            <section class="dashboard-header">
+
+                <div>
+
+                    <span class="dashboard-label">
+                        STUDENT DASHBOARD
+                    </span>
+
+                    <h1>
+                        Welcome back,
+                        <span data-user-name>
+                            Student
+                        </span>!
+                        👋
+                    </h1>
+
+                    <p>
+                        Submit your code, track reviews,
+                        and improve your programming skills.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="submit.html"
+                    class="btn btn-primary submit-code-btn"
+                >
+                    + Submit New Code
+                </a>
+
+            </section>
+
+
+            <!-- =================================
+                 STATISTICS
+            ================================== -->
+
+            <section class="stats-grid">
+
+
+                <!-- Total Submissions -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📝
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>
+                            Total Submissions
+                        </span>
+
+                        <strong id="totalSubmissions">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Under Review -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🔍
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>
+                            Under Review
+                        </span>
+
+                        <strong id="underReviewCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Approved -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ✓
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>
+                            Approved
+                        </span>
+
+                        <strong id="approvedCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Changes Requested -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ↻
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>
+                            Changes Requested
+                        </span>
+
+                        <strong id="changesRequestedCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 RECENT SUBMISSIONS
+            ================================== -->
+
+            <section
+                class="submissions-section"
+                id="all-submissions"
+            >
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="dashboard-label">
+                            YOUR WORK
+                        </span>
+
+                        <h2>
+                            Recent Submissions
+                        </h2>
+
+                    </div>
+
+                    <!--
+                        All student submissions are loaded
+                        dynamically by dashboard.js.
+                    -->
+
+                    <a
+                        href="#all-submissions"
+                        class="view-all-link"
+                    >
+                        View All →
+                    </a>
+
+                </div>
+
+
+                <!-- =================================
+                     SUBMISSION LIST
+
+                     dashboard.js loads the real
+                     submissions from the backend.
+                ================================== -->
+
+                <div class="submission-list">
+
+                    <div class="empty-state">
+
+                        <p>
+                            Loading your submissions...
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 QUICK ACTIONS
+            ================================== -->
+
+            <section class="quick-actions">
+
+                <h2>
+                    Quick Actions
+                </h2>
+
+
+                <div class="quick-action-grid">
+
+
+                    <!-- Submit Code -->
+
+                    <a
+                        href="submit.html"
+                        class="quick-action-card"
+                    >
+
+                        <div class="quick-action-icon">
+                            +
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Submit New Code
+                            </h3>
+
+                            <p>
+                                Send your code for review.
+                            </p>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- Profile -->
+
+                    <a
+                        href="profile.html"
+                        class="quick-action-card"
+                    >
+
+                        <div class="quick-action-icon">
+                            👤
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                View Profile
+                            </h3>
+
+                            <p>
+                                Manage your account details.
+                            </p>
+
+                        </div>
+
+                    </a>
+
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =================================
+         FOOTER
+    ================================== -->
+
+    <footer class="dashboard-footer">
+
+        <div class="container">
+
+            <p>
+                © 2026 CodeReviewHub.
+                All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =================================
+         JAVASCRIPT
+    ================================== -->
+
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

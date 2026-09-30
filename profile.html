@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Profile | CodeReviewHub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="dashboard-navbar">
+
+        <div class="dashboard-nav-container">
+
+            <a href="index.html" class="dashboard-logo">
+
+                <span class="logo-icon">⌘</span>
+
+                <span>CodeReviewHub</span>
+
+            </a>
+
+
+            <nav class="dashboard-nav-links">
+
+                <a href="dashboard.html">
+                    Dashboard
+                </a>
+
+                <a href="profile.html" class="active">
+                    Profile
+                </a>
+
+                <button
+                    type="button"
+                    class="logout-btn"
+                    id="logoutBtn"
+                >
+                    Logout
+                </button>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="profile-main">
+
+        <div class="dashboard-container">
+
+
+            <!-- ================= PAGE HEADER ================= -->
+
+            <section class="profile-page-header">
+
+                <div>
+
+                    <span class="dashboard-badge">
+                        👤 My Account
+                    </span>
+
+                    <h1>
+                        Profile Settings
+                    </h1>
+
+                    <p>
+                        Manage your CodeReviewHub account information
+                        and preferences.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= PROFILE CONTENT ================= -->
+
+            <section class="profile-layout">
+
+
+                <!-- ================= PROFILE CARD ================= -->
+
+                <div class="profile-card profile-user-card">
+
+                    <div
+                        class="profile-avatar"
+                        id="profileAvatar"
+                    >
+                        U
+                    </div>
+
+                    <h2 id="profileDisplayName">
+                        User
+                    </h2>
+
+                    <p
+                        class="profile-email"
+                        id="profileDisplayEmail"
+                    >
+                        user@example.com
+                    </p>
+
+                    <span
+                        class="profile-role"
+                        id="profileDisplayRole"
+                    >
+                        Student
+                    </span>
+
+                    <div class="profile-divider"></div>
+
+                    <div class="profile-member-info">
+
+                        <div>
+
+                            <span>
+                                Member Since
+                            </span>
+
+                            <strong id="memberSince">
+                                -
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Account Status
+                            </span>
+
+                            <strong class="account-active">
+                                ● Active
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= ACCOUNT INFORMATION ================= -->
+
+                <div class="profile-card">
+
+                    <div class="profile-card-header">
+
+                        <div>
+
+                            <h2>
+                                Personal Information
+                            </h2>
+
+                            <p>
+                                Update your basic account details.
+                            </p>
+
+                        </div>
+
+                        <span class="profile-card-icon">
+                            ✎
+                        </span>
+
+                    </div>
+
+
+                    <form id="profileForm">
+
+
+                        <!-- Full Name -->
+
+                        <div class="profile-form-group">
+
+                            <label for="fullName">
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="fullName"
+                                name="fullName"
+                                placeholder="Enter your full name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- Email -->
+
+                        <div class="profile-form-group">
+
+                            <label for="email">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Enter your email"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- Role -->
+
+                        <div class="profile-form-group">
+
+                            <label for="role">
+                                Account Role
+                            </label>
+
+                            <select
+                                id="role"
+                                name="role"
+                                disabled
+                            >
+
+                                <option value="STUDENT">
+                                    Student
+                                </option>
+
+                                <option value="REVIEWER">
+                                    Reviewer
+                                </option>
+
+                            </select>
+
+                            <small>
+                                Your role is assigned during registration
+                                and cannot be changed here.
+                            </small>
+
+                        </div>
+
+
+                        <!-- Message -->
+
+                        <div
+                            id="profileMessage"
+                            class="profile-message"
+                        ></div>
+
+
+                        <!-- Actions -->
+
+                        <div class="profile-actions">
+
+                            <button
+                                type="button"
+                                class="profile-cancel-btn"
+                                id="cancelProfileBtn"
+                            >
+                                Cancel
+                            </button>
+
+                            <button
+                                type="submit"
+                                class="profile-save-btn"
+                            >
+                                Save Changes
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+            </section>
+
+
+            <!-- ================= SECURITY SECTION ================= -->
+
+            <section class="profile-card security-card">
+
+                <div class="profile-card-header">
+
+                    <div>
+
+                        <h2>
+                            Security
+                        </h2>
+
+                        <p>
+                            Keep your CodeReviewHub account secure.
+                        </p>
+
+                    </div>
+
+                    <span class="profile-card-icon">
+                        🔒
+                    </span>
+
+                </div>
+
+
+                <div class="security-row">
+
+                    <div class="security-info">
+
+                        <div class="security-icon">
+                            🔑
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Password
+                            </h3>
+
+                            <p>
+                                Change your account password regularly
+                                to keep your account secure.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="change-password-btn"
+                        id="changePasswordBtn"
+                    >
+                        Change Password
+                    </button>
+
+                </div>
+
+
+                <div class="security-row">
+
+                    <div class="security-info">
+
+                        <div class="security-icon">
+                            🛡️
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Account Protection
+                            </h3>
+
+                            <p>
+                                Your account uses secure authentication
+                                to protect your information.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <span class="security-status">
+                        ✓ Protected
+                    </span>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= DANGER ZONE ================= -->
+
+            <section class="profile-card danger-zone">
+
+                <div>
+
+                    <h2>
+                        Account Actions
+                    </h2>
+
+                    <p>
+                        Be careful when performing account-related
+                        actions.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="logout-profile-btn"
+                    id="profileLogoutBtn"
+                >
+                    Logout from Account
+                </button>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="dashboard-footer">
+
+        <p>
+            © 2026 CodeReviewHub. Built for better code reviews.
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/profile.js"></script>
+
+</body>
+
+</html>
